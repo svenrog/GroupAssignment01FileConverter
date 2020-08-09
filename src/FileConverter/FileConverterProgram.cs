@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FileConverter
 {
-    class Options
+    public class Options
     {
         [Option('i', "input", Required = true, HelpText = "Path to input file.")]
         public string Input { get; set; }
@@ -13,7 +13,7 @@ namespace FileConverter
         public string Output { get; set; }
     }
 
-    class Program
+    public class FileConverterProgram
     {
         static void Main(string[] args)
         {
@@ -22,9 +22,9 @@ namespace FileConverter
                           .WithNotParsed(Abort);
         }
 
-        static void Run(Options options)
+        public static void Run(Options options)
         {
-
+            
         }
 
         static void Abort(IEnumerable<Error> errors)
