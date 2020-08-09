@@ -61,7 +61,7 @@ namespace FileConverter.Tests
         [TestMethod]
         public void CanConvertBinary()
         {
-            CanConvert(".bin");
+            CanConvert(".bin", ".xml");
         }
 
         [TestMethod]
@@ -82,12 +82,16 @@ namespace FileConverter.Tests
             CanConvert(".csv");
         }
 
-        private void CanConvert(string extension)
+        private void CanConvert(string extension, string sourceExtension = null)
         {
+            if (sourceExtension != null)
+                HasReader(sourceExtension);
+
             HasReader(extension);
             HasWriter(extension);
 
-            var path = GetTemplatePath(extension);
+            var path = GetTemplatePath(sourceExtension ?? extension);
+            var sourceReader = GetReader(sourceExtension ?? extension);
             var reader = GetReader(extension);
             var writer = GetWriter(extension);
 
@@ -96,7 +100,7 @@ namespace FileConverter.Tests
 
             using (var inputStream = File.OpenRead(path))
             {
-                firstRead = reader.Read(inputStream);
+                firstRead = sourceReader.Read(inputStream);
 
                 Assert.IsNotNull(firstRead);
 

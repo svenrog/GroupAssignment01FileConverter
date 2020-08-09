@@ -19,9 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Template.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Template.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
