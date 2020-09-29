@@ -24,7 +24,7 @@ namespace FileConverter
 
         public static void Run(Options options)
         {
-            
+            throw new NotImplementedException();
         }
 
         static void Abort(IEnumerable<Error> errors)
