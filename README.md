@@ -42,3 +42,23 @@ Till er hjälp har ni den statiska klassen `ConverterRegistrationScanner` som ha
 Dessa populeras vid körning av programmet och hittar automatiskt klasser som implementerar `IFileWriter` respektive `IFileReader`.
 Man kan således hämta ut en `IFileWriter` från `ConverterRegistrationScanner.SupportedWriters[".xml"]`.
 Vidare behöver man bistå med funktionaliteten för alla `IFileWriter` och `IFileReader` som krävs för att lösa uppgiften.
+
+### Kom igång
+
+För att lösa denna uppgift behöver man skapa klasser som implementerar `IFileWriter` och `IFileReader`.
+
+När man implementerar en klass så behöver egenskapen `Extension` sättas på ett sådant sätt att `ConverterRegistrationScanner` registrerar korrekt logik för tillhörande filändelse.
+
+```
+public class XmlWriter : IFileWriter
+{
+    public string Extension => ".xml";
+
+    public void Write(Stream stream, object data)
+    {
+        throw new NotImplementedException();
+    }
+}
+```
+
+Detta behöver sedan göras så att alla i listan krävda filformat har sin `IFileWriter` och sin `IFileReader`.
